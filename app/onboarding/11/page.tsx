@@ -54,22 +54,26 @@ const Page: FC<PageProps> = memo(() => {
             fullWidth
             placeholder="First Name Only"
           />
-          <Select
-            classNames={{
-              control: () => '!bg-none !bg-transparent',
-            }}
-            className="!bg-none !bg-transparent"
-            fullWidth
-            placeholder="Age"
-          />
-          <Select
-            classNames={{
-              control: () => '!bg-none !bg-transparent',
-            }}
-            className="!bg-none !bg-transparent"
-            fullWidth
-            placeholder="Gender"
-          />
+          {typeof window !== 'undefined' && (
+            <>
+              <Select
+                classNames={{
+                  control: () => '!bg-none !bg-transparent',
+                }}
+                className="!bg-none !bg-transparent"
+                fullWidth
+                placeholder="Age"
+              />
+              <Select
+                classNames={{
+                  control: () => '!bg-none !bg-transparent',
+                }}
+                className="!bg-none !bg-transparent"
+                fullWidth
+                placeholder="Gender"
+              />
+            </>
+          )}
         </div>
         <Button pill fullWidth theme="outline" href={`/`}>
           Next
