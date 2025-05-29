@@ -1,0 +1,9 @@
+public/js/**/*
+.editorconfig
+build
+out
+.husky
+.next
+.vscode
+.node_modules
+

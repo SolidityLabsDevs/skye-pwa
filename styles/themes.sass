@@ -1,0 +1,54 @@
+@tailwind base
+@tailwind components
+@tailwind utilities
+
+@function hexToRGB($hex)
+  @return red($hex), green($hex), blue($hex)
+
+@layer base
+  :root
+    --color-neutral-50: theme('colors.gray.50')
+    --color-neutral-100: theme('colors.gray.100')
+    --color-neutral-200: theme('colors.gray.200')
+    --color-neutral-300: theme('colors.gray.300')
+    --color-neutral-400: theme('colors.gray.400')
+    --color-neutral-500: theme('colors.gray.500')
+    --color-neutral-600: theme('colors.gray.600')
+    --color-neutral-700: theme('colors.gray.700')
+    --color-neutral-800: theme('colors.gray.800')
+    --color-neutral-900: theme('colors.gray.900')
+
+.theme-light
+  --default: #d7dbdf
+  --neutralBg: #fafafa
+  --onNeutralBg: #fefefe
+  --defaultText: rgba(0,0,0,.90)
+  --primaryBg: var(--color-primary-100)
+  --onPrimaryBg: var(--color-primary-900)
+  --primary: #2cf293
+  --primaryForeground: var(--color-primary-50)
+
+.theme-dark
+  --default: #3a3f42
+  --onNeutralBg: #20232b
+  // --onNeutralBg: #252528
+  --neutralBg: #0c0d0e
+  // --neutralBg: #313131
+  --defaultText: rgba(255,255,255,.90)
+  --primaryBg: var(--color-primary-900)
+  --onPrimaryBg: var(--color-primary-50)
+  --primary: var(--color-primary-400)
+  --primaryForeground: var(--color-primary-100)
+
+.theme-default
+  --color-primary-50: #edf4ff
+  --color-primary-100: #deebff
+  --color-primary-200: #c4d9ff
+  --color-primary-300: #a0c0ff
+  --color-primary-400: #7a9aff
+  --color-primary-500: #4766f9
+  --color-primary-600: #3c4def
+  --color-primary-700: #2f3cd3
+  --color-primary-800: #2935aa
+  --color-primary-900: #293486
+  --color-primary-950: #181d4e

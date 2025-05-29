@@ -1,0 +1,42 @@
+@use './reset'
+@use './normilize'
+@use './fonts'
+@use './themes'
+
+@tailwind base
+@tailwind components
+@tailwind utilities
+
+:root
+  font-size: 16px
+  --neutral-text: #000
+  --neutral-background: #f9f9fb
+
+body
+  font-size: 1rem
+  background: #f9f9fb
+  margin: 0 !important
+
+html,
+body,
+main
+  max-width: 100vw
+  height: 100%
+  min-height: 100vh
+  min-height: 100svh
+  overflow-x: hidden
+  z-index: 0
+
+*
+  z-index: 1
+  // overscroll-behavior-y: contain
+  @apply scroll-smooth
+
+// @media screen and (max-width: 768px)
+//   :root
+//     font-size: 14px
+
+select,
+textarea,
+input
+  font-size: 16px
