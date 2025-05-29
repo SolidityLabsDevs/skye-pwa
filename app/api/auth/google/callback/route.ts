@@ -1,4 +1,4 @@
-import { User } from '.prisma/generated/client';
+import { User } from '@prisma/client';
 import { appConfig } from 'config/appConfig';
 import { google } from 'googleapis';
 import { getUniqueUsername } from 'helpers';

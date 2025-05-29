@@ -1,5 +1,5 @@
 export const runtime = 'nodejs';
-import { User } from '.prisma/generated/client';
+import { User } from '@prisma/client';
 import { appConfig } from 'config/appConfig';
 import { getUniqueUsername } from 'helpers';
 import { getLoginSession, setLoginSession } from 'lib/auth';
