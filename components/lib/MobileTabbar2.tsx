@@ -7,6 +7,7 @@ import { IconType } from 'react-icons';
 
 import { customScrollbar } from 'constants/classNames';
 import { DropdownButton } from 'components/ui/DropdownButton';
+import { NoiseBg } from 'components/backgrounds/NoiseBg';
 
 export type MobileTabbarProps = {
   variant?: 'floating' | 'fixed' | 'local';
@@ -46,7 +47,7 @@ const Tabbar: FC<MobileTabbarProps> = ({
   position,
   pathname,
   lastLinkFixed,
-  variant = 'fixed',
+  variant = 'floating',
 }) => {
   const tagClasses = (active?: boolean) => {
     return {
@@ -74,7 +75,8 @@ const Tabbar: FC<MobileTabbarProps> = ({
       local: 'w-full flex bg-onNeutralBg py-[18px] justify-around gap-4',
       fixed:
         'absolute bottom-0 left-0 flex bg-white max-w-[540px] mx-auto -translate-x-1/2 left-1/2 justify-between flex-row w-full gap-3 pt-2 pb-3 px-3 rounded-[24px] shadow-sm',
-      floating: 'py-3    w-full   px-8 flex bg-white rounded-[24px] justify-between flex-row gap-4',
+      floating:
+        'py-3    w-full   px-8 flex bg-[#242328] rounded-[50px] border border-default justify-between flex-row gap-4',
     };
   };
 
@@ -112,7 +114,7 @@ const Tabbar: FC<MobileTabbarProps> = ({
       <>
         <div
           className={cn(
-            'flex flex-row gap-4 overflow-x-auto flex-1 justify-around',
+            'flex relative flex-row gap-4 overflow-x-auto flex-1 justify-around',
             customScrollbar
           )}
         >
@@ -194,8 +196,9 @@ const Tabbar: FC<MobileTabbarProps> = ({
 
   return (
     <div style={wrapperStyles()[variant]} className={wrapperClasses()[variant]}>
-      <div className={contentWrapperClasses()[variant]}>
+      <div className={cn(contentWrapperClasses()[variant], 'overflow-hidden relative')}>
         <Content />
+        <NoiseBg className="h-[78px] rounded-[50px] mt-3" />
       </div>
     </div>
   );
@@ -204,13 +207,6 @@ const Tabbar: FC<MobileTabbarProps> = ({
 export const MobileTabbar2: FC<MobileTabbarProps> = memo(({ routes, variant, lastLinkFixed }) => {
   const pathname = usePathname();
   const [position] = useState(0);
-
-  // useEffect(() => {
-  //   const element = document.body;
-  //   const onScroll = () => setPosition((element?.scrollTop || 0) * 100);
-  //   element?.addEventListener('scroll', onScroll, { passive: true });
-  //   return () => element?.removeEventListener('scroll', onScroll);
-  // }, []);
 
   return (
     <Tabbar

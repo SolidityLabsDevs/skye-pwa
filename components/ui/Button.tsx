@@ -21,7 +21,8 @@ export type ButtonProps = {
     | 'white'
     | 'gold'
     | 'glass'
-    | 'primary';
+    | 'primary'
+    | 'gradient';
   className?: string;
   href?: string;
   disabled?: boolean;
@@ -104,6 +105,14 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = memo(
             'opacity-80 cursor-not-allowed': disabled,
             shine: shine,
             '!rounded-[1.5rem]': pill,
+
+            // local
+            '[filter:drop-shadow(0px_8px_8px_rgba(165,72,247,0.2))_drop-shadow(0px_8px_30px_rgba(81,152,239,0.16))]':
+              theme === 'gradient',
+            '[background:linear-gradient(to_right,_#47326B_0%,_#914372_50%,_#AC714F_100%)]':
+              theme === 'gradient',
+            '!p-4 !rounded-[30px]  flex flex-row items-center gap-2 font-light justify-center text-center':
+              theme === 'gradient',
           },
           className
         )}
