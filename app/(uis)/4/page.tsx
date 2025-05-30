@@ -52,7 +52,7 @@ const Page: FC<PageProps> = memo(() => {
             This Month
           </div>
         </div>
-        <Image alt="" src="/images/assets/11.svg" width={0} height={0} className="w-full h-auto" />
+        <Image alt="" src="/images/assets/16.svg" width={0} height={0} className="w-full h-auto" />
         <p className="text-[#98a1bd] font-light">
           The Subconscious Alignment Score measures how closely your inner patterns match the life
           you want to create.
