@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider        = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 generator json {
@@ -87,6 +87,8 @@ model User {
 
   created_at DateTime @default(now()) @map(name: "created_at")
   updated_at DateTime @updatedAt @map(name: "updated_at")
+
+  audios Audio[]
 }
 
 model Code {

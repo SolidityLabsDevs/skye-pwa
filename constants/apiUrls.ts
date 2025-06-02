@@ -20,14 +20,16 @@ export const API = {
   },
 
   USER: {
-    PAY: {
-      INDEX: '/api/user/pay',
+    AUDIO: {
+      INDEX: '/api/user/audio',
     },
-    SCAN: {
-      GPT: {
-        TRANSCRIBE: '/api/user/scan/gpt/transcribe',
-      },
-    },
+  },
+
+  ADMIN: {
+    INDEX: '/api/admin',
+    TRACKS: {
+      INDEX: '/api/admin/tracks'
+    }
   },
 
   STOCKS: {

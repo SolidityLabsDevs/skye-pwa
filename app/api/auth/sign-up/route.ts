@@ -30,8 +30,7 @@ export async function POST(req: NextRequest) {
 
   const isValid = (await SignUpSchema.safeParse(body)).success;
 
-  const { email, password, firstName, lastName, mobile, verificationCode } = body;
-  const name = `${firstName} ${lastName}`;
+  const { email, password, name, mobile, verificationCode } = body;
 
   // "Connect new account" feature
   const session = await getLoginSession();

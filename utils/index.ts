@@ -10,3 +10,4 @@ export * from './deepCopyObject';
 export * from './toKebabCase';
 export * from './formatCurrency';
 export * from './humanFileSize/humanFileSize';
+export * from './fileToDataUrlNodeJS';

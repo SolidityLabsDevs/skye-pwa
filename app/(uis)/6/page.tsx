@@ -5,7 +5,7 @@ import { FC, memo } from 'react';
 import { HiOutlineSpeakerWave } from 'react-icons/hi2';
 import { FaPause } from 'react-icons/fa6';
 import { TbRewindForward15, TbRewindBackward15 } from 'react-icons/tb';
-import { Progress } from 'components/ui';
+import { Progress } from 'components/ui/Progress';
 
 type PageProps = unknown;
 

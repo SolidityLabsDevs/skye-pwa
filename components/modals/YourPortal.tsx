@@ -1,15 +1,19 @@
+'use client';
 import { ComponentProps, FC, memo } from 'react';
 
-import { useModalStore } from 'stores';
+import { useModalStore, useUserStore } from 'stores';
 import { Dialog } from 'components/ui/Dialog';
 import { Button } from 'components/ui/Button';
 
 import { ProfileCard } from 'components/local/ProfileCard';
+import { useRouter } from 'next/navigation';
 
 type YourPortalProps = {} & ComponentProps<typeof Dialog>;
 
 export const YourPortal: FC<YourPortalProps> = memo(({ ...props }) => {
   const { activeModal, hide } = useModalStore(state => state);
+  const { role } = useUserStore(state => state.user);
+  const router = useRouter();
 
   return (
     <Dialog
@@ -27,7 +31,14 @@ export const YourPortal: FC<YourPortalProps> = memo(({ ...props }) => {
         </span>
         <ProfileCard />
       </div>
-      <Button theme="outline" pill href="/onboarding">
+      <Button
+        theme="outline"
+        onClick={() => {
+          router.push(`/dashboard/${role?.toLowerCase()}/discover`);
+          hide();
+        }}
+        pill
+      >
         Begin Your Shift
       </Button>
     </Dialog>

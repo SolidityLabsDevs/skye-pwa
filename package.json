@@ -8,7 +8,7 @@
     "prisma": "npx prisma generate --schema=./prisma/schema && npx prisma migrate deploy --schema=./prisma/schema",
     "prisma:update": "npx prisma migrate dev --schema=./prisma/schema --name upd",
     "analyze": "cross-env ANALYZE=true next build",
-    "db": "npx prisma studio",
+    "db": "npx prisma studio --schema=./prisma/schema",
     "start": "next start",
     "lint": "npx next lint --fix --config=eslint.config.mjs .",
     "check-ts": "tsc -p tsconfig.json",

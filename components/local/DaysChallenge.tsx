@@ -1,5 +1,5 @@
 'use client';
-import { Progress } from 'components/ui';
+import { Progress } from 'components/ui/Progress';
 import { FC, memo } from 'react';
 
 type DaysChallengeProps = unknown;

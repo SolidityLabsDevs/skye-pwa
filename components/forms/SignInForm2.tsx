@@ -55,33 +55,28 @@ export const SignInForm2: FC<SignInFormProps> = memo(() => {
   });
 
   return (
-    <form onSubmit={submit} className="flex w-full max-w-[400px] flex-col gap-10 transition-all">
+    <form onSubmit={submit} className="flex flex-col w-full gap-10 transition-all">
       <div className={cn('flex flex-col items-center justify-center w-full h-full gap-2')}>
-        <div className="!w-full">
-          <label className="text-[0.875rem] text-[#57575b] mb-2">Email Address *</label>
-          <Input
-            {...register('email')}
-            placeholder={'Enter your email'}
-            type="email"
-            autoCorrect="off"
-            autoCapitalize="none"
-            required={true}
-            error={errors?.email?.message}
-            label="Email Address *"
-            wrpClassName="!w-full !max-w-full"
-          />
-        </div>
-        <div className="!w-full">
-          <label className="text-[0.875rem] text-[#57575b] mb-2">Password *</label>
-          <Input
-            {...register('password')}
-            placeholder={'Enter your password'}
-            type="password"
-            required={true}
-            error={errors?.password?.message}
-            wrpClassName="!w-full !max-w-full"
-          />
-        </div>
+        <Input
+          label="Email"
+          {...register('email')}
+          placeholder={'Enter your email'}
+          type="email"
+          autoCorrect="off"
+          autoCapitalize="none"
+          required={true}
+          error={errors?.email?.message}
+          fullWidth
+        />
+        <Input
+          label="Password"
+          {...register('password')}
+          placeholder={'********'}
+          type="password"
+          required={true}
+          error={errors?.password?.message}
+          fullWidth
+        />
         {appConfig.ENABLE_PASSWORD_RESET && (
           <button
             type="button"

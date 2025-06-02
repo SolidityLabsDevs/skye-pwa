@@ -16,7 +16,7 @@ import { getIcon } from 'helpers';
 
 import { IoMenu, IoCodeWorkingOutline, IoHomeSharp } from 'react-icons/io5';
 import { IoMdSettings, IoIosHelpBuoy } from 'react-icons/io';
-import { MdModeEdit, MdAdminPanelSettings } from 'react-icons/md';
+import { MdModeEdit, MdAdminPanelSettings, MdAudiotrack } from 'react-icons/md';
 import { LiaFileContractSolid } from 'react-icons/lia';
 import { RiLogoutBoxLine, RiNftLine } from 'react-icons/ri';
 import { IoIosArrowDown, IoIosArrowForward } from 'react-icons/io';
@@ -52,6 +52,7 @@ type DashboardLayoutProps = {
 };
 
 export const ICONS = {
+  MdAudiotrack: MdAudiotrack,
   TfiLayoutListPost: TfiLayoutListPost,
   IoLibraryOutline: IoLibraryOutline,
   FaTasks: FaTasks,

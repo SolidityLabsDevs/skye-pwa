@@ -1,4 +1,6 @@
+import { getLoginSession } from 'lib/auth';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { FC, memo } from 'react';
 
 type PageProps = unknown;
@@ -23,7 +25,12 @@ const href = [
   '/6',
 ];
 
-const Page: FC<PageProps> = memo(() => {
+const Page: FC<PageProps> = memo(async () => {
+  const session = await getLoginSession();
+
+  if (!session?.id) redirect('/sign-in');
+  if (session?.id) redirect('/dashboard');
+
   return (
     <div className="flex flex-col gap-4 p-4">
       {href.map(h => (
