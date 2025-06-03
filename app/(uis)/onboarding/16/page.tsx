@@ -35,7 +35,7 @@ const Page: FC<PageProps> = memo(() => {
           That’s exactly what Skye was designed to do. Quietly. Repeatedly. Night after night.
         </p>
       </div>
-      <Button theme='gradient' className="mx-auto mt-auto" href={`/onboarding/${number + 1}`}>
+      <Button theme="gradient" className="mx-auto mt-auto" href={`/onboarding/${number + 1}`}>
         Continue <MdKeyboardArrowRight />
       </Button>
     </MobileContainer>

@@ -94,7 +94,7 @@ const Page: FC<PageProps> = memo(() => {
           );
         }}
       </SwipableScroll>
-      <Button theme='gradient' className="mx-auto mt-auto" href={`/onboarding/${number + 1}`}>
+      <Button theme="gradient" className="mx-auto mt-auto" href={`/onboarding/${number + 1}`}>
         Continue <MdKeyboardArrowRight />
       </Button>
     </MobileContainer>
