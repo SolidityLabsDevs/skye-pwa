@@ -79,7 +79,7 @@ const Page: FC<PageProps> = memo(() => {
             </>
           )}
         </div>
-        <Button pill fullWidth theme="outline" href={`/`}>
+        <Button pill fullWidth theme="outline" href={`/onboarding/${number + 1}`}>
           Next
         </Button>
       </div>

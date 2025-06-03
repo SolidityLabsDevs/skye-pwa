@@ -8,6 +8,7 @@ type CustomSliderProps = {
   step?: number;
   leftLabel?: string;
   rightLabel?: string;
+  valueLabel?: string;
 };
 
 export const CustomSlider: FC<CustomSliderProps> = ({
@@ -18,10 +19,14 @@ export const CustomSlider: FC<CustomSliderProps> = ({
   step = 1,
   leftLabel = 'Min',
   rightLabel = 'Max',
+  valueLabel = '',
 }) => {
   return (
     <div className="flex flex-col items-center w-full max-w-md px-4 py-8">
-      <div className="mb-6 text-6xl font-extrabold text-white">{value}</div>
+      <div className="mb-6 text-6xl font-extrabold text-white">
+        {value}
+        {valueLabel}
+      </div>
 
       <div className="relative w-full">
         <input
