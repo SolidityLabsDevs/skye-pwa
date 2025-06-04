@@ -13,6 +13,23 @@ model Audio {
   audioFileId String?
   audioFile   Storage? @relation("audioFile", fields: [audioFileId], references: [id])
 
+  show_for_answers_question_1 String[]
+  show_for_answers_question_2 String[]
+  show_for_answers_question_3 String[]
+  show_for_answers_question_4 String[]
+  show_for_answers_question_5 String[]
+  show_for_answers_question_6 String[]
+  show_for_answers_question_7 String[]
+  show_for_answers_question_8 String[]
+  show_for_answers_question_9 String[]
+
+  about_your_script                String?
+  how_it_works                     String?
+  what_you_will_feel               String?
+  how_to_listen_for_maximum_effect String?
+
+  frequency String?
+
   created_at DateTime @default(now()) @map(name: "created_at")
   updated_at DateTime @updatedAt @map(name: "updated_at")
 }
