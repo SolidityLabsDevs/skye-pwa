@@ -1,6 +1,7 @@
 export const QUESTIONS = [
   {
     id: 'q-1',
+    db_prop: 'question_1',
     title: `Question #1`,
     text: 'Have you ever explored rewiring your mind while you sleep?',
     answers: [
@@ -24,6 +25,7 @@ export const QUESTIONS = [
   },
   {
     id: 'q-2',
+    db_prop: 'question_2',
     title: `Question #2`,
     text: 'Do you ever feel like something inside you is holding you back?',
     answers: [
@@ -43,11 +45,14 @@ export const QUESTIONS = [
   },
   {
     id: 'q-3',
+    db_prop: 'question_3',
     title: `Question #3`,
     text: 'When your inner voice speaks to you is it kind or critical?',
+    answers: [],
   },
   {
     id: 'q-4',
+    db_prop: 'question_4',
     title: `Question #4`,
     text: 'Which of these patterns do you notice most in your thoughts? ',
     text_2: 'Select 2',
@@ -80,6 +85,7 @@ export const QUESTIONS = [
   },
   {
     id: 'q-5',
+    db_prop: 'question_5',
     title: `Question #5`,
     text: 'Which of these patterns do you notice most in your thoughts?',
     answers: [
@@ -107,6 +113,7 @@ export const QUESTIONS = [
   },
   {
     id: 'q-6',
+    db_prop: 'question_6',
     title: `Question #6`,
     text: 'Do you ever self sabatoge?',
     answers: [
@@ -134,6 +141,7 @@ export const QUESTIONS = [
   },
   {
     id: 'q-7',
+    db_prop: 'question_7',
     title: `Question #7`,
     text: 'What emotion feels most stuck in your body right now?',
     answers: [
@@ -165,6 +173,7 @@ export const QUESTIONS = [
   },
   {
     id: 'q-8',
+    db_prop: 'question_8',
     title: `Question #8`,
     text: 'Does your mind tend to stay active at night?',
     answers: [
@@ -174,7 +183,7 @@ export const QUESTIONS = [
       },
       {
         id: 'q-8-a-2',
-        text: 'Sometimes  ',
+        text: 'Sometimes',
       },
       {
         id: 'q-8-a-3',
@@ -188,6 +197,7 @@ export const QUESTIONS = [
   },
   {
     id: 'q-9',
+    db_prop: 'question_9',
     title: `Question #9`,
     text: 'When you try to change something — sleep, focus, habits — how easy is it to stay consistent?',
     answers: [

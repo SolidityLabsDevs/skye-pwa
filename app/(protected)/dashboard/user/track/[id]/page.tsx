@@ -1,108 +1,98 @@
 'use client';
+
 import { MobileContainer } from 'components/lib/MobileContainer';
 import Image from 'next/image';
-import { FC, memo, useEffect, useRef, useState } from 'react';
+import { FC, memo } from 'react';
 
-import { HiOutlineSpeakerWave } from 'react-icons/hi2';
-import { FaPause, FaPlay } from 'react-icons/fa6';
-import { TbRewindForward15, TbRewindBackward15 } from 'react-icons/tb';
-import { Progress } from 'components/ui/Progress';
-import { AudioFull } from 'types/entities';
+import { RiUser3Line } from 'react-icons/ri';
+import { Days } from 'components/local/Days';
+import { DaysChallenge } from 'components/local/DaysChallenge';
+import { Track } from 'components/local/Track';
+import { useModalStore } from 'stores';
+import { useAudioOverviewContext } from 'contexts';
 
-type PageProps = {
-  audio: AudioFull;
-};
+type PageProps = unknown;
 
-const Page: FC<PageProps> = memo(({ audio }) => {
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
+const Page: FC<PageProps> = memo(() => {
+  const showModal = useModalStore(state => state.show);
 
-  const togglePlay = () => {
-    const audioEl = audioRef.current;
-    if (!audioEl) return;
-    if (audioEl.paused) {
-      audioEl.play();
-      setIsPlaying(true);
-    } else {
-      audioEl.pause();
-      setIsPlaying(false);
-    }
-  };
-
-  const skip = (seconds: number) => {
-    if (audioRef.current) {
-      audioRef.current.currentTime += seconds;
-    }
-  };
-
-  useEffect(() => {
-    const audioEl = audioRef.current;
-    if (!audioEl) return;
-
-    const updateTime = () => setCurrentTime(audioEl.currentTime);
-    const updateDuration = () => setDuration(audioEl.duration);
-
-    audioEl.addEventListener('timeupdate', updateTime);
-    audioEl.addEventListener('loadedmetadata', updateDuration);
-
-    return () => {
-      audioEl.removeEventListener('timeupdate', updateTime);
-      audioEl.removeEventListener('loadedmetadata', updateDuration);
-    };
-  }, []);
-
-  const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-  };
+  const { audio } = useAudioOverviewContext();
 
   return (
     <MobileContainer
-      isStackScreen
       showHeader
-      headerScreenTitle={<HiOutlineSpeakerWave className="ml-auto" size={24} />}
-      bgClassName='bg-[url("/images/assets/3.png")] bg-cover bg-left-top bg-no-repeat'
-      className="flex flex-col items-center justify-between flex-1"
+      isStackScreen
+      headerScreenTitle={
+        <div className="flex flex-row items-center justify-between w-full gap-4">
+          <Image src="/images/assets/4.svg" alt="" width={73} height={34} />
+          <button onClick={() => showModal('YourPortal', {})}>
+            <RiUser3Line size={24} />
+          </button>
+        </div>
+      }
+      bgClassName='bg-[url("/images/assets/6.png")] bg-cover bg-left-top bg-no-repeat'
+      className="flex flex-col gap-6"
     >
-      <div></div>
-
-      <audio ref={audioRef} src={audio?.audioFile?.url || ''} preload="metadata" />
-
+      <Days />
+      <DaysChallenge />
       <Image
         alt=""
-        src={audio?.audioCoverImage?.base64 || audio?.audioCoverImage?.url || ''}
+        src="/images/assets/2.png"
         width={0}
         height={0}
-        className="w-full h-full max-w-[272px] max-h-[324px] mx-auto"
+        className="my-14 w-full h-full max-w-[173px] max-h-[207px] mx-auto"
       />
-
-      <div className="flex flex-col w-full gap-8">
-        <p className="text-[1.568rem] font-light text-center">{audio?.title}</p>
-
-        <div className="flex flex-row items-center justify-center gap-11">
-          <TbRewindBackward15 size={20} onClick={() => skip(-15)} className="cursor-pointer" />
-          {isPlaying ? (
-            <FaPause size={30} onClick={togglePlay} className="cursor-pointer" />
-          ) : (
-            <FaPlay size={30} onClick={togglePlay} className="cursor-pointer" />
-          )}
-          <TbRewindForward15 size={20} onClick={() => skip(15)} className="cursor-pointer" />
+      <Track audio={audio} />
+      <div className="flex flex-col gap-5">
+        <p className="italic font-bold text-left">About Your Script</p>
+        <div
+          className="font-light text-[#98a1bd]"
+          dangerouslySetInnerHTML={{ __html: audio?.about_your_script || '' }}
+        />
+      </div>
+      <div className="flex flex-col gap-5">
+        <p className="italic font-bold text-left">Frequency Selection</p>
+        <div>
+          <p className="text-[1.5rem] text-center block bg-clip-text text-transparent bg-[linear-gradient(to_right,_#8850a9_0%,_#e9a88f_100%)]">
+            396 Hz
+          </p>
+          <p className="text-[1.5rem] text-center block bg-clip-text text-transparent bg-[linear-gradient(to_right,_#8850a9_0%,_#e9a88f_100%)]">
+            The Frequency of Release
+          </p>
         </div>
+        <p className="text-[#98a1bd]">How It Works:</p>
+        <div dangerouslySetInnerHTML={{ __html: audio?.how_it_works || '' }} />
 
-        <div className="flex flex-col w-full gap-2">
-          <Progress
-            progress={(currentTime / duration) * 100 || 0}
-            className="w-full shrink-0"
-            barClassName="[background:linear-gradient(to_right,_#47326B_0%,_#914372_50%,_#AC714F_100%)]"
-          />
-          <div className="w-full shrink-0 flex flex-row justify-between gap-4 font-medium text-[#e6e7f2] text-[0.75rem]">
-            <p>{formatTime(currentTime)}</p>
-            <p>{formatTime(duration)}</p>
+        <p className="text-[#98a1bd]">What You’ll Feel After Listening:</p>
+        <div dangerouslySetInnerHTML={{ __html: audio?.what_you_will_feel || '' }} />
+      </div>
+      <div className="flex flex-col gap-20">
+        <p className="italic font-bold text-center">How to Listen for Maximum Effect</p>
+        <div className="flex flex-row items-center justify-center gap-3">
+          <div className="flex flex-col gap-1">
+            <p className="text-center font-medium text-[1.25rem] block bg-clip-text text-transparent bg-[linear-gradient(to_right,_#8850a9_0%,_#e9a88f_100%)]">
+              7 DAYS
+            </p>
+            <p className="text-[0.563rem] text-center font-light text-[#98a1bd]">INITIAL SHIFT</p>
+          </div>
+          <div className="flex flex-col gap-1">
+            <p className="text-center font-medium text-[1.875rem] block bg-clip-text text-transparent bg-[linear-gradient(to_right,_#8850a9_0%,_#e9a88f_100%)]">
+              21 DAYS
+            </p>
+            <p className="text-[0.688rem] text-center font-light text-[#98a1bd]">
+              FULL TRANSFORMATION
+            </p>
+          </div>
+          <div className="flex flex-col gap-1">
+            <p className="text-center font-medium text-[1.25rem] block bg-clip-text text-transparent bg-[linear-gradient(to_right,_#8850a9_0%,_#e9a88f_100%)]">
+              14 DAYS
+            </p>
+            <p className="text-[0.563rem] text-center font-light text-[#98a1bd]">
+              DEEP INTEGRATION
+            </p>
           </div>
         </div>
+        <div dangerouslySetInnerHTML={{ __html: audio?.how_to_listen_for_maximum_effect || '' }} />
       </div>
     </MobileContainer>
   );

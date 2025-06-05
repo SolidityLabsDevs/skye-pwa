@@ -124,6 +124,7 @@
     "react-select": "^5.10.1",
     "react-share": "^5.2.2",
     "react-simple-image-viewer": "^1.2.2",
+    "react-simple-wysiwyg": "^3.2.2",
     "react-sortablejs": "^6.1.4",
     "react-square-web-payments-sdk": "^3.2.3",
     "react-toastify": "^10.0.6",

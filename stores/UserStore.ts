@@ -1,9 +1,9 @@
-import { Storage, User } from '@prisma/client';
+import { Answers, Storage, User } from '@prisma/client';
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
 export type UserState = {
-  user: Partial<User & { image: Storage }>;
+  user: Partial<User & { image: Storage; answers: Answers | null }>;
 };
 
 type Actions = {

@@ -1,11 +1,17 @@
+'use client';
 import { MobileContainer } from 'components/lib/MobileContainer';
 import { AudioList } from 'components/local/AudioList';
 import { WeekDays2 } from 'components/local/WeekDays2';
+import { Button } from 'components/ui/Button';
 import Image from 'next/image';
 import { FC, memo } from 'react';
+import { useUserStore } from 'stores';
+
 type PageProps = unknown;
 
 const Page: FC<PageProps> = memo(() => {
+  const user = useUserStore(state => state.user);
+
   return (
     <MobileContainer
       showHeader
@@ -20,6 +26,15 @@ const Page: FC<PageProps> = memo(() => {
       className="flex flex-col gap-8"
     >
       <Image alt="" src="/images/assets/15.svg" width={0} height={0} className="w-full h-auto" />
+      {!user?.answers && (
+        <Button
+          fullWidth
+          theme="gradient"
+          href={`/dashboard/${user?.role?.toLowerCase()}/onboarding`}
+        >
+          Open Onboarding
+        </Button>
+      )}
       <div className="flex flex-col gap-3">
         <p className="font-thin italic text-[#ebeaec]">PROGRAMS</p>
         <AudioList />

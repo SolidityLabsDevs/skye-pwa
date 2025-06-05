@@ -23,13 +23,16 @@ export const API = {
     AUDIO: {
       INDEX: '/api/user/audio',
     },
+    ONBOARDING: {
+      INDEX: '/api/user/onboarding',
+    },
   },
 
   ADMIN: {
     INDEX: '/api/admin',
     TRACKS: {
-      INDEX: '/api/admin/tracks'
-    }
+      INDEX: '/api/admin/tracks',
+    },
   },
 
   STOCKS: {

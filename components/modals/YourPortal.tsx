@@ -34,7 +34,7 @@ export const YourPortal: FC<YourPortalProps> = memo(({ ...props }) => {
       <Button
         theme="outline"
         onClick={() => {
-          router.push(`/dashboard/${role?.toLowerCase()}/discover`);
+          router.push(`/dashboard/${role?.toLowerCase()}`);
           hide();
         }}
         pill

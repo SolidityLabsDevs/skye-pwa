@@ -1,7 +1,7 @@
 import prisma from 'lib/prisma';
 import { redirect } from 'next/navigation';
-import { FC, memo } from 'react';
-import Page from './page';
+import { FC, memo, PropsWithChildren } from 'react';
+import { AudioOverviewProvider } from 'contexts';
 
 type PageProps = {
   params: {
@@ -9,7 +9,7 @@ type PageProps = {
   };
 };
 
-const Layout: FC<PageProps> = memo(async props => {
+const Layout: FC<PropsWithChildren<PageProps>> = memo(async props => {
   const params = await props.params;
   const id = params?.id;
 
@@ -25,7 +25,7 @@ const Layout: FC<PageProps> = memo(async props => {
 
   if (!audio) redirect('/dashboard');
 
-  return <Page audio={audio} />;
+  return <AudioOverviewProvider audioData={audio}>{props?.children}</AudioOverviewProvider>;
 });
 
 export default Layout;

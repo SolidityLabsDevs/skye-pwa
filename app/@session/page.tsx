@@ -19,6 +19,7 @@ const Page: FC<SessionProps> = memo(async () => {
           },
           select: {
             ...prismaExclude('User', ['password']),
+            answers: true,
           },
         })) || {};
     }
